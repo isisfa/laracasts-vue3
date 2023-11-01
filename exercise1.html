@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 3 exercises</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: grid;
+            place-items: center;
+        }
+        .text-green {
+            color: green;
+        }
+        .text-pink {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <h1>
+            <input type="text" v-model="greeting">
+        </h1>
+
+        <h2>
+            {{ greeting }} ({{ greeting.length }})
+        </h2>
+
+        <button :class="active? 'text-green' : 'text-pink'" @click="toggle">Click me</button>
+        
+    </div>
+    
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    greeting: 'Hi!',
+                    active: false,
+                };
+            },
+
+            methods: {
+                toggle() {
+                    this.active = ! this.active;
+                }
+            },
+
+            mounted() {
+                setTimeout(() => {
+                    this.greeting = 'Changed';
+                }, 3000)
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
