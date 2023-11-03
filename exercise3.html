@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 4: Vue Components</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+        html, body {
+            height: 100%;
+        }
+     </style>
+</head>
+<body class="h-full grid place-items-center">
+    <div id="app">
+        <app-button>Submit</app-button>
+    </div>
+
+
+
+
+    <script>
+        let app = {
+            components: {
+                'app-button': {
+                    template: `
+                    <button class="bg-gray-200 hover:bg-gray-400 px-5 py-2 border rounded disabled:cursor-not-allowed" :disabled="processing">
+                    <slot />
+                    </button>
+                    `,
+
+                    data() {
+                        return {
+                            processing: true
+                        };
+                    },
+                    mounted() {
+                        alert('Hiii');
+                    }
+                },
+                'assignments-list': {},
+                'assignments-list-item': {},
+                'accordion': {}
+            }
+        }
+
+
+        Vue.createApp(app).mount('#app');
+    </script>
+</body>
+</html>
